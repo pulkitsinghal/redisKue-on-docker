@@ -1,0 +1,13 @@
+version: '2'
+services:
+  worker:
+    #restart: no
+    image: node:6
+    environment:
+      - REDIS_URL=${REDIS_URL}
+    volumes:
+      - ./redisKueWorker.js:/apps/redisKueWorker.js
+      - ./node_modules:/apps/node_modules
+    entrypoint:
+      - node
+      - /apps/redisKueWorker.js

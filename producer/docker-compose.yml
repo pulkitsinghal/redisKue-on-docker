@@ -1,0 +1,12 @@
+version: '2'
+services:
+  producer:
+    image: node:6
+    environment:
+      - REDIS_URL=${REDIS_URL}
+    volumes:
+      - ./redisKueProducer.js:/apps/redisKueProducer.js
+      - ./node_modules:/apps/node_modules
+    entrypoint:
+      - node
+      - /apps/redisKueProducer.js
